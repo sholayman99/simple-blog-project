@@ -1,10 +1,30 @@
+import { useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
+import { postLatest } from "../apiRequest/apiRequest";
+import BlogList from "../Component/BlogList";
+import Loader from "../Component/Loader";
 
 
 const HomePage = () => {
+ 
+    const [newsList,setNewsList] = useState(null) ;
+
+    useEffect(() => {
+
+       (async()=>{
+          let res = await postLatest();
+          setNewsList(res) ;
+       })()
+
+    },[])
+
+
+
     return (
         <Layout>
-           <h1>This is Home Page</h1> 
+          {
+            newsList === null? <Loader /> :  <BlogList newsList={newsList} /> 
+          }
         </Layout>
     );
 };

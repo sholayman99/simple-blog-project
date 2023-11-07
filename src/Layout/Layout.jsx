@@ -20,7 +20,7 @@ const Layout = (props) => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar shadow-xl fixed top-0 z-50 bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,7 +48,7 @@ const Layout = (props) => {
               </li>
               {categories.map((item, index) => {
                 return (
-                  <li key={index}>
+                  <li key={index.toString()}>
                     <NavLink to={"/byCategory/" + item["id"]}>
                       {item["name"]}
                     </NavLink>
@@ -57,7 +57,7 @@ const Layout = (props) => {
               })}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">Simple Blog Project </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -66,7 +66,7 @@ const Layout = (props) => {
             </li>
             {categories.map((item, index) => {
               return (
-                <li key={index}>
+                <li key={index.toString()}>
                   <NavLink to={"/byCategory/" + item["id"]}>
                     {item["name"]}
                   </NavLink>
